@@ -1,0 +1,21 @@
+services:
+  mongo:
+    image: mongo:8.0.8
+    container_name: mongo_db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - mongo_network
+
+volumes:
+  mongo_data:
+
+
+networks:
+  mongo_network:
+    driver: bridge
